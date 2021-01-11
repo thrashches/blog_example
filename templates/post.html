@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ title }}</h2>
+    <p><b>{{ post.posted }}</b> {{ post.date|date:"d M Y" }}</p>
+    <img class="float-left" src="https://source.unsplash.com/random" style="max-height: 400px;">
+    <p>{{ post.text }}</p>
+
+    <hr>
+<!-- Content here -->
+<div class="container">
+<!-- Content here -->
+<h4>Comments ({{ post.comments_quantity }})</h4>
+
+<form method="post">
+    {% csrf_token %}
+<div class="form-group">
+
+<div class="col-sm-10">
+    {{ form }}
+{#  <textarea class="form-control form-control-sm" id="colFormLabel" rows='5' placeholder= name="text"></textarea>#}
+    {% if request.user.is_authenticated %}
+        <input type="submit" class="btn btn-success" value="New comment">
+    {% else %}
+
+    {% endif %}
+
+</div>
+</div>
+</form>
+<hr>
+
+{% include 'comments.html' %}
+
+
+</div>
+
+
+
+</div>
+{% endblock %}

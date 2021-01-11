@@ -1,0 +1,15 @@
+
+{% for comment in post.comment_set.all %}
+
+    <div class="container-fluid">
+<!-- Content here -->
+<a href="#"><b>{{ comment.posted }}</b></a>
+<p>{{ comment.date }}</p>
+<p>{{ comment.text }}</p>
+<hr>
+
+
+</div>
+
+
+{% endfor %}
